@@ -1,5 +1,7 @@
 <template>
-	<blockGame />
+	<v-app>
+		<blockGame />
+	</v-app>
 </template>
 
 <script>
