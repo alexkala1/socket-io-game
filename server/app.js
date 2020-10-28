@@ -1,14 +1,18 @@
 const express = require("express")
 const http = require("http").Server(express)
 const socketio = require("socket.io")(http)
+const initializeDeck = require("./deck")
 
 const position = {
 	x: 200,
 	y: 200
 }
 
+const deck = initializeDeck();
+
 socketio.on("connection", socket => {
 	socket.emit("position", position)
+	socket.emit("game_start", deck)
 
 	socket.on("move", data => {
 		switch(data) {
